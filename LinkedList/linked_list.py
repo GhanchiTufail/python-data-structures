@@ -1,11 +1,9 @@
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+from node import Node
 
 class LinkedList:
     def __init__(self):
         self.head = None
+
 
     def append(self,data):
         new_node = Node(data)
@@ -17,6 +15,7 @@ class LinkedList:
             last = last.next
         last.next = new_node
 
+
     def add(self,data):
         new_node = Node(data)
         if not self.head:
@@ -25,21 +24,27 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
 
+
+    def delete_beginning(self):
+        if self.head is None:
+            return
+        if self.head.next is None:
+            self.head = None
+            return 
+        self.head = self.head.next
+    
+    def delete_end(self):
+        if self.head is None:
+            return
+        while self.head.next:
+            self.head = self.head.next
+        self.head = None
+        print(self.head.data)
+
+
     def display(self):
         temp = self.head
-        while temp:
+        while temp is not None:
             print(temp.data, end=" -> ")
             temp = temp.next
         print("None")
-
-
-ll = LinkedList()
-ll.add(40)
-ll.append(80)
-ll.add(30)
-ll.append(70)
-ll.add(20)
-ll.append(60)
-ll.add(10)
-ll.append(50)
-ll.display()
