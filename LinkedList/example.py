@@ -3,17 +3,24 @@ from linked_list import LinkedList
 ll = LinkedList()
 
 while True:
+    print("")
     print("Options: ")
     print("1. Add at end")
     print("2. Add at beginning")
     print("3. Display")
     print("4. Delete at beginning")
     print("5. Delete at end")
+    print("6. Insert at Specific position")
+    print("7. Search for an element")
+    print("8. Search by index")
+    print("9. count list")
+    print("10. print reversed list")
     print("0. Exit")
+    print("")
     
     choice = int(input("Enter you choice: "))
     
-    choice_list = [0,1,2,3,4,5]
+    choice_list = [0,1,2,3,4,5,6,7,8,9,10]
     if choice not in choice_list:
         print("invalid choice")
         break
@@ -36,6 +43,27 @@ while True:
     if choice == 5:
         ll.delete_end()
 
+    if choice == 6:
+        position = int(input("Enter the position : "))
+        data = int(input("Enter the data : "))
+        ll.add_at_position(data,position)
+
+    if choice == 7:
+        data = int(input("Enter the data to search : "))
+        result = ll.search_by_value(data)
+        print(result)
+    
+    if choice == 8:
+        data = int(input("Enter index to search : "))
+        result = ll.search_by_index(data)
+        print(result)
+    
+    if choice == 9:
+        print(f"The total elements in list is : {ll.count()}")
+
+    if choice == 10:
+        ll.reverse_list()
+        
     if choice == 0:
         print("Exit")
         break
