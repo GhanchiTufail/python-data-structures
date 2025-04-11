@@ -96,9 +96,9 @@ class LinkedList:
 
     
     def count(self):
-        total = 1
+        total = 0
         temp = self.head
-        while temp.next:
+        while temp:
             total += 1
             temp = temp.next
         return total
@@ -110,8 +110,35 @@ class LinkedList:
 
         while current_node:
             next_node = current_node.next
-            current_node.next = previous_node  # Reverse the link
+            current_node.next = previous_node  
             previous_node = current_node
             current_node = next_node
 
         self.head = previous_node
+
+    
+    def detect_cycle(self):
+        fast = self.head
+        slow = self.head
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+            if slow == fast:
+                print("cycle detects in the linked list")
+                return True
+        
+        print("No cycle detected")
+        return False
+
+
+    def sort_list(self):
+        current = self.head
+        next = self.head.next
+
+        while self.head:
+            if current.data > next.data:
+                current.next = next.next
+                next.next = current
+            self.head = self.head.next
