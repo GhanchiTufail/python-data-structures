@@ -39,6 +39,7 @@ class LinkedList:
             return
         if self.head.next is None:
             self.head = None
+            return
         temp = self.head
         while temp.next.next:
             temp = temp.next
@@ -46,6 +47,10 @@ class LinkedList:
 
 
     def add_at_position(self, data: int, position: int):
+        if position < 0:
+            print("Invalid position")
+        if position == 1:
+            self.add(data)
         new_node = Node(data)
         temp = self.head
         temp2 = temp
@@ -142,3 +147,12 @@ class LinkedList:
                 current.next = next.next
                 next.next = current
             self.head = self.head.next
+
+
+    def middle_element(self):
+        fast = self.head
+        slow = self.head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow.data

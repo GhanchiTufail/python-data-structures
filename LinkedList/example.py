@@ -17,12 +17,13 @@ while True:
     print("10. print reversed list")
     print("11. Detects if the linked list contains a cycle")
     print("12. Sort the linked list")
+    print("13. Find the middle element")
     print("0. Exit")
     print("")
     
     choice = int(input("Enter you choice: "))
     
-    choice_list = [0,1,2,3,4,5,6,7,8,9,10,11,12]
+    choice_list = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
     if choice not in choice_list:
         print("invalid choice")
         break
@@ -72,6 +73,10 @@ while True:
     if choice == 12:
         ll.sort_list()
         
+    if choice == 13:
+        data = ll.middle_element()
+        print(f"The the middle element is {data}")
+
     if choice == 0:
         print("Exit")
         break
